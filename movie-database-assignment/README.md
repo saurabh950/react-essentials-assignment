@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Deployment URL
+
+Please check the peoject on this - [https://movie-database-assignment-sand.vercel.app/](https://movie-database-assignment-sand.vercel.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
