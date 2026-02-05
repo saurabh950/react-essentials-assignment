@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Deployment URL
 
-Please check the peoject on this - [https://movie-database-assignment-sand.vercel.app/](https://movie-database-assignment-sand.vercel.app/)
+Please check the peoject on this - [https://movie-database-assignment-1.vercel.app/](https://movie-database-assignment-1.vercel.app/)
 
 ## Available Scripts
 
