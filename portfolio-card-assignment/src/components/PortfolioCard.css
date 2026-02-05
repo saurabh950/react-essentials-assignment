@@ -1,7 +1,7 @@
 .portfolio-card {
   padding: 40px;
   max-width: 500px;
-  margin: 20px auto;
+  /* margin: 20px auto; */
   border-radius: 16px;
   background: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -176,3 +176,61 @@
   from { opacity: 0; transform: translateX(-50%) translateY(20px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
+
+/* -----------------------------
+   Mobile / Responsive Styles
+   ----------------------------- */
+
+@media (max-width: 600px) {
+  .portfolio-card {
+    padding: 20px;
+    max-width: 100%;
+    margin: 12px;
+    border-radius: 12px;
+  }
+
+  .header h1 {
+    font-size: 1.6em;
+    line-height: 1.1;
+  }
+
+  .header h2 {
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+    margin: 16px 0;
+  }
+
+  .bio {
+    font-size: 0.95em;
+    max-width: 100%;
+    padding: 0 6px;
+  }
+
+  .skills {
+    gap: 8px;
+    margin: 18px 0;
+  }
+
+  .skill-badge {
+    padding: 5px 10px;
+    font-size: 0.8em;
+  }
+  .alert {
+    bottom: 14px;
+    padding: 10px 14px;
+    max-width: 95%;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .header h1 { font-size: 1.4em; }
+  .avatar { width: 96px; height: 96px; }
+  .portfolio-card { padding: 16px; }
+}
+

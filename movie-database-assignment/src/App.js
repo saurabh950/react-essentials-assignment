@@ -11,11 +11,15 @@ function App() {
   const [favourites, setFavourites] = useState([]);
   const [theme, setTheme] = useState('light');
 
-  const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    movie.year.toString().includes(searchTerm) ||
-    movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredMovies = movies.filter(movie => {
+    const term = searchTerm.trim().toLowerCase();
+    return (
+      movie.title.toLowerCase().includes(term) ||
+      movie.year.toString().includes(term) ||
+      movie.genre.toLowerCase().includes(term) ||
+      (movie.tags && movie.tags.some(tag => tag.toLowerCase().includes(term)))
+    );
+  });
 
   const toggleFavourite = (id) => {
     setFavourites(prev =>
@@ -24,24 +28,42 @@ function App() {
   };
 
   const resetSearch = () => setSearchTerm('');
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
+  const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
 
   return (
     <div className={`App ${theme}`}>
       <button onClick={toggleTheme} className="btn-theme">
         {theme === 'light' ? <FaMoon /> : <FaSun />}
       </button>
-      <h1>Movie Database</h1>
-      <div className="controls">
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <button onClick={resetSearch} className="btn-reset"><FaRedo /> Reset</button>
+
+      <div className="panel">
+        <header className="panel-header">
+          <h1>Movie Explorer</h1>
+          <p className="subtitle">Search, filter, and favorite movies. Designed for a single-page React component structure.</p>
+        </header>
+
+        <div className="controls">
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <button onClick={resetSearch} className="btn-reset"><FaRedo /> Reset</button>
+        </div>
+
+        {searchTerm !== '' && <div className="results-count">{filteredMovies.length} results for "{searchTerm}"</div>}
+
+        <div className="panel-grid">
+          <section className="left">
+            <div className="section-heading">
+              <h2>Matching Movies</h2>
+            </div>
+            <MovieList movies={searchTerm === '' ? movies : filteredMovies} favourites={favourites} toggleFavourite={toggleFavourite} />
+          </section>
+          <aside className="right">
+            <div className="section-heading">
+              <h2>Favorite Movies</h2>
+            </div>
+            <Favourites movies={movies} favourites={favourites} toggleFavourite={toggleFavourite} />
+          </aside>
+        </div>
       </div>
-      {searchTerm === '' ? (
-        <p>Start typing to search for movies.</p>
-      ) : (
-        <MovieList movies={filteredMovies} favourites={favourites} toggleFavourite={toggleFavourite} />
-      )}
-      <Favourites movies={movies} favourites={favourites} toggleFavourite={toggleFavourite} />
     </div>
   );
 }
