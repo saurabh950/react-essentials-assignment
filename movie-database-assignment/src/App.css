@@ -1,8 +1,8 @@
 /* Page and App */
 .App {
   position: relative;
-  min-height: 100vh;
-  padding: 60px 40px;
+  /* min-height: 100vh; */
+  padding: 20px;
   background: linear-gradient(135deg, #eef2f6 0%, #f8fafc 100%);
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -10,7 +10,7 @@
 /* Centered white panel */
 .panel {
   max-width: 1100px;
-  margin: 20px auto;
+  margin: 0 auto;
   background: #ffffff;
   border-radius: 16px;
   padding: 32px;
@@ -206,7 +206,7 @@
 
 
 /* Movie list - vertical stack inside left column */
-.movie-list { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+.movie-list { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; max-height: 500px; overflow-y: auto; padding-right: 8px; }
 
 .movie-card {
   display: block;
@@ -283,6 +283,8 @@
   .controls { gap: 8px; }
   .btn-reset { width: 100%; align-self: stretch; }
 
+  .movie-list { max-height: 400px; }
+
   /* card layout stacks vertically */
   .movie-card .card-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
   .card-left { align-self: flex-start; flex: 0 0 48px; }
@@ -317,7 +319,7 @@
   .rating-badge { padding: 3px 8px; font-size: 13px; }
 
   /* fav toggle becomes full width icon button */
-  .fav-toggle { justify-content: center; padding: 10px; border-radius: 10px; }
+  .fav-toggle { justify-content: center; padding: 6px; border-radius: 15px; }
   .fav-toggle .fav-text { display: none; }
 
   .tag-group { gap: 6px; }
